@@ -1,0 +1,194 @@
+@import url('https://fonts.cdnfonts.com/css/calculator');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg-dark: #303841;
+    --color-bg-gray: #3A4750;
+    --color-bg-red: #D72323;
+    --color-white: #EEEEEE;
+    --color-box-shadow-buttons-inset: rgba(48, 56, 65, 0.3);
+    --color-box-shadow-buttons: rgba(15, 23, 26, 0.6);
+}
+
+body {
+    /* font-family: 'Calculator', sans-serif; */
+    background-color: var(--color-bg-gray);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#case-of-calc {
+    width: 360px;
+    height: calc(100vh*0.9226);
+    min-height: 420px;
+    min-width: 240px;
+    background-color: var(--color-bg-dark);
+    border-radius: 5%;
+    display: grid;
+    grid-template-rows: 37.5% 12.5% 50%; /* Proporcje: 1:2, 1:2, dolna część 1:1 */
+    grid-template-columns: 3fr 1fr; /* Dolne divy: 4:3 i 4:1 */
+    gap: 0;  /* 2% 3% */
+}
+
+#case-presentation-area {
+    grid-column: span 2;
+    padding: 5%;
+}
+
+#presentation-area { 
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--color-white);
+    padding: 5% 3%;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    gap: 7.5%;
+    border-radius: 15%;
+}
+
+#presentation-calculate,
+#presentation-result { 
+    padding: 0 5%;
+    color: var(--color-bg-dark);
+    display: grid;
+    place-items: center end;
+    overflow-y: auto;
+    scrollbar-width: none;
+    text-align: end;
+
+    /* Poprawione zawijanie dla liczb i operatorów */
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+#presentation-calculate::-webkit-scrollbar, 
+#presentation-result::-webkit-scrollbar {
+    display: none;
+}
+
+
+#advanced-tools {
+    grid-column: span 2; /* Oba górne divy zajmują pełną szerokość */
+    padding: 0 2% 2.5% 2.5%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    place-items: start center;
+    gap: 2% .5%;
+}
+
+#brackets-container {
+    width: 90%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    place-items: center;
+}
+
+#left-bracket,
+#right-bracket {
+    width: 80%;
+    height: 94.5%;
+    display: grid;
+    place-items: center;
+    font-size: 1.85em;
+}
+
+.advanced-tool-1 {
+    width: 80%;
+    height: 85%;
+}
+
+.advanced-tool-1:nth-child(2):not(#right-bracket) {
+
+}
+
+#number-sheet {
+    padding: 2.5% 2.5% 2.5% 0;
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: start end;
+    gap: .5% 2%;
+}
+
+.number-block {
+    width: 83.5%;
+    height: 75%;
+}
+
+#simple-tools {
+    padding: 2.5%;
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    place-items: start center;
+    gap: .5% 2%;
+    
+}
+
+.simple-tool {
+    width: 80%;
+    height: 75%;
+}
+
+.advanced-tool-1,
+.number-block,
+.simple-tool {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--color-white);
+    background-color: var(--color-bg-gray);
+    display: grid;
+    place-items: center;
+    box-shadow: 
+    inset 0 -3em 3em var(--color-box-shadow-buttons-inset), /*Wewnętrzny cień*/
+    0 0 0 0.5px var(--color-bg-dark), /* Biała obwódka */
+    0.3em 0.3em 1em var(--color-box-shadow-buttons); /* Zewnętrzny cień w jasnym odcieniu dla kontrastu */
+    border-radius: 10%;
+    border: none;
+    font-size: 1.4em;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#change {
+    position: relative;
+}
+
+/* Styl tooltipa */
+.tooltip {
+    visibility: hidden;
+    width: 3.5rem;
+    height: calc(3.5rem*.45);
+    font-size: .8rem;
+    background-color: var(--color-bg-dark);
+    color: var(--color-white);
+    text-align: center;
+    border-radius: 5px;
+    border: rgba(15, 23, 26, 0.6) 1px solid;
+    padding: 5%;
+    position: absolute;
+    top: 110%; /* Ustawiamy tooltip poniżej przycisku */
+    left: 180%;
+    margin-left: -60px; /* Wyrównanie tooltipa na środku */
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.75s cubic-bezier(1, 0.02, 0.75, 0.65);
+}
+
+/* Pokaż tooltip po najechaniu na przycisk */
+.number-block:hover .tooltip {
+    visibility: visible;
+    opacity: .9;
+    transition-delay: 0s;
+}
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.1/math.min.js"></script>
+    <title>Progresive calculator</title>
+</head>
+<body>
+    <div id="case-of-calc">
+        <div id="case-presentation-area">
+            <div id="presentation-area">
+                <div id="presentation-calculate">776858-9734+5325-78&div;(435+34235+680)*34235325</div>
+                <div id="presentation-result">=895</div>
+            </div>
+        </div>
+        <div id="advanced-tools">
+            <button type="button" id="clr" class="advanced-tool-1" onclick="clr()">C</button>
+            <button type="button" id="del" class="advanced-tool-1" style="font-weight: 400; font-size: 2em;" onclick="del()">←</button>
+            <button type="button" id="percent" class="advanced-tool-1" name="%" onclick="printNum(this)">%</button>
+            <div id="brackets-container">
+                <button type="button" id="left-bracket" class="advanced-tool-1" name="(" onclick="printNum(this)">(</button>
+                <button type="button" id="right-bracket" class="advanced-tool-1" name=")" onclick="printNum(this)">)</button>
+            </div>
+        </div>
+        <div id="number-sheet">
+            <button type="button" id="num7" class="number-block" name="7"  onclick="printNum(this)">7</button>
+            <button type="button" id="num8" class="number-block" name="8"  onclick="printNum(this)">8</button>
+            <button type="button" id="num9" class="number-block" name="9"  onclick="printNum(this)">9</button>
+            <button type="button" id="num4" class="number-block" name="4"  onclick="printNum(this)">4</button>
+            <button type="button" id="num5" class="number-block" name="5"  onclick="printNum(this)">5</button>
+            <button type="button" id="num6" class="number-block" name="6"  onclick="printNum(this)">6</button>
+            <button type="button" id="num1" class="number-block" name="1"  onclick="printNum(this)">1</button>
+            <button type="button" id="num2" class="number-block" name="2"  onclick="printNum(this)">2</button>
+            <button type="button" id="num3" class="number-block" name="3"  onclick="printNum(this)">3</button>
+            <button type="button" id="change" class="number-block">&#x21A9;<!--&#x21AA;-->
+                <span class="tooltip">Expand</span>
+            </button>
+            <button type="button" id="num0" class="number-block" name="0" onclick="printNum(this)">0</button>
+            <button type="button" id="comma" class="number-block" style="font-size: xx-large;" name="." onclick="printNum(this)">,</button>
+        </div>
+        <div id="simple-tools">
+            <button type="button" id="division" class="simple-tool" style="font-size: xxx-large;" name="/" onclick="printNum(this)">&div;</button>
+            <button type="button" class="simple-tool" style="font-weight: 700;" name="*" onclick="printNum(this)">&#10005;</button>
+            <button type="button" class="simple-tool"style="font-size: xx-large;" name="-" onclick="printNum(this)">-</button>
+            <button type="button" class="simple-tool"style="font-size: xx-large;" name="+" onclick="printNum(this)">+</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
