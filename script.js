@@ -1,7 +1,7 @@
 let showResult = document.getElementById("presentation-result");
 let calcResult = document.getElementById("presentation-calculate");
 
-showResult.innerHTML = "=";
+showResult.innerHTML = "";
 calcResult.innerHTML = null;
 
 // let addNumber0 = document.getElementById("num0");
@@ -91,26 +91,26 @@ function printNum(button) {
     // ✅ Oblicz tylko jeśli ostatni znak NIE jest operatorem
     if (!operators.includes(newChar)) {
         try {
-            const result = math.evaluate(calcResult.innerHTML);
-            showResult.innerHTML = "=" + result;
+            const result = parseFloat(math.evaluate(calcResult.innerHTML).toFixed(10));
+            showResult.innerHTML = result;
             console.log(result);
         } catch (e) {
             console.log("Błąd w obliczeniach:", e.message);
-            showResult.innerHTML = "=";
+            showResult.innerHTML = "";
         }
     } else {
-        showResult.innerHTML = "=";
+        showResult.innerHTML = "";
     }
 }
 
 function clr() {
     calcResult.innerHTML = null;
-    showResult.innerHTML = "=";
+    showResult.innerHTML = "";
 }
 
 function del() {
     console.log(calcResult.innerHTML.at(-1));
     calcResult.innerHTML = calcResult.innerHTML.slice(0, -1);
     let result = math.evaluate(calcResult.innerHTML);
-    showResult.innerHTML = "=" + (result ?? "");
+    showResult.innerHTML = (result ?? "");
 }
